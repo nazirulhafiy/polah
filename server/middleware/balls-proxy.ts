@@ -27,8 +27,8 @@ function shouldRewrite(contentType: string): boolean {
 /** Prefix root-absolute game assets so they stay under /balls/. */
 function rewriteBallsUrls(body: string): string {
   return body
-    .replace(/(^|["'(=\s])\/assets\//g, "$1/balls/assets/")
-    .replace(/(^|["'(=\s])\/favicon\.svg/g, "$1/balls/favicon.svg");
+    .replace(/(^|[`"'(=\s])\/assets\//g, "$1/balls/assets/")
+    .replace(/(^|[`"'(=\s])\/favicon\.svg/g, "$1/balls/favicon.svg");
 }
 
 export default async function ballsProxyMiddleware(

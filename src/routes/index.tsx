@@ -44,7 +44,7 @@ function Home() {
           <h2 id="things-heading" className="sr-only">
             Things
           </h2>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 lg:gap-7">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
             {featured.map((project) => (
               <FeaturedCard key={project.slug} project={project} />
             ))}
