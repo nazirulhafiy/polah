@@ -31,6 +31,8 @@ export function FeaturedCard({ project }: { project: Project }) {
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noreferrer"
       className="group/card ink lift flex flex-col overflow-hidden rounded-[18px] bg-paper text-ink"
     >
       {project.image ? (
@@ -71,6 +73,8 @@ export function ProjectRow({ project }: { project: Project }) {
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noreferrer"
       className="group/row -mx-2 flex min-h-14 items-baseline justify-between gap-4 rounded-[14px] px-2 py-3 text-ink transition-colors hover:bg-paper"
     >
       <span className="min-w-0">
