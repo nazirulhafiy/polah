@@ -1,29 +1,4 @@
-import { cn } from "@/lib/utils";
-import {
-  type Project,
-  type ProjectStatus,
-  projectHref,
-} from "@/data/projects";
-
-const STATUS_LABEL: Record<ProjectStatus, string> = {
-  LIVE: "Live",
-  EXPERIMENT: "Experiment",
-  WIP: "WIP",
-  ARCHIVED: "Archived",
-};
-
-function StatusChip({ status }: { status: ProjectStatus }) {
-  return (
-    <span
-      className={cn(
-        "inline-flex items-center rounded-full border-2 border-ink bg-paper px-2 py-0.5",
-        "font-display text-[0.68rem] font-semibold uppercase tracking-[0.14em] leading-none text-ink",
-      )}
-    >
-      {STATUS_LABEL[status]}
-    </span>
-  );
-}
+import { type Project, projectHref } from "@/data/projects";
 
 export function FeaturedCard({ project }: { project: Project }) {
   const href = projectHref(project);
@@ -47,12 +22,9 @@ export function FeaturedCard({ project }: { project: Project }) {
         </div>
       ) : null}
       <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <h3 className="font-display text-2xl font-bold tracking-tight sm:text-[1.75rem]">
-            {project.name}
-          </h3>
-          <StatusChip status={project.status} />
-        </div>
+        <h3 className="font-display text-2xl font-bold tracking-tight sm:text-[1.75rem]">
+          {project.name}
+        </h3>
         <p className="max-w-prose flex-1 text-pretty text-[0.95rem] leading-relaxed text-muted sm:text-base">
           {project.description}
         </p>
@@ -78,10 +50,7 @@ export function ProjectRow({ project }: { project: Project }) {
       className="group/row -mx-2 flex min-h-14 items-baseline justify-between gap-4 rounded-[14px] px-2 py-3 text-ink transition-colors hover:bg-paper"
     >
       <span className="min-w-0">
-        <span className="flex flex-wrap items-center gap-2">
-          <span className="font-display text-lg font-semibold">{project.name}</span>
-          <StatusChip status={project.status} />
-        </span>
+        <span className="font-display text-lg font-semibold">{project.name}</span>
         <span className="mt-0.5 block text-pretty text-sm text-muted">
           {project.description}
         </span>
