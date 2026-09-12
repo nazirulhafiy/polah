@@ -1,4 +1,4 @@
-const ORIGIN = "https://cat-balls-paws-of-chaos.vercel.app";
+const ORIGIN = "https://hafiy.my/cat-pinball-game/";
 
 type ProxyEvent = {
   url: URL;
@@ -11,7 +11,8 @@ function isBallsPath(path: string): boolean {
 
 function originPath(path: string): string {
   const stripped = path.slice("/balls".length);
-  return stripped.length === 0 ? "/" : stripped;
+  if (!stripped || stripped === "/") return "";
+  return stripped.replace(/^\//, "");
 }
 
 function shouldRewrite(contentType: string): boolean {
