@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fredoka", ui-rounded, system-ui, sans-serif;
+  --font-sans: "Bricolage Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #141414;
+  --color-navy: #16224a;
+  --color-sky: #3d7dff;
+  --color-cream: #fff4d8;
+  --color-paper: #fffaf0;
+  --color-butter: #ffe566;
+  --color-gold: #ffc107;
+  --color-pink: #ff6ea8;
+  --color-peach: #ffc8a0;
+  --color-teal: #2ee0b2;
+  --color-ok: #39e07a;
+  --color-bad: #ff4d6a;
+  --color-muted: #5a5146;
+
+  --shadow-ink: 4px 5px 0 #141414;
+  --shadow-ink-sm: 3px 4px 0 #141414;
+  --shadow-ink-lift: 6px 7px 0 #141414;
+  --shadow-ink-press: 1px 2px 0 #141414;
+
+  --radius-card: 18px;
+  --radius-media: 14px;
+  --radius-btn: 14px;
+  --radius-chip: 999px;
+
+  --ease-press: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+  }
+}
+
+@layer components {
+  .ink {
+    border: 3px solid var(--color-ink);
+    box-shadow: var(--shadow-ink);
+  }
+
+  .ink-sm {
+    border: 2.5px solid var(--color-ink);
+    box-shadow: var(--shadow-ink-sm);
+  }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+  }
+
+  .wordmark-dot {
+    display: inline-block;
+    width: 0.26em;
+    height: 0.26em;
+    margin-left: 0.06em;
+    background: var(--color-butter);
+    border: 0.07em solid var(--color-ink);
+    border-radius: 50%;
+    vertical-align: 0.08em;
+    transform-origin: 50% 60%;
+    transition: transform 180ms var(--ease-press);
+  }
+
+  .wordmark:hover .wordmark-dot,
+  .wordmark:focus-visible .wordmark-dot {
+    transform: rotate(-12deg) translateY(-1px);
+  }
+
+  .cta-arrow {
+    display: inline-block;
+    transition: transform 160ms var(--ease-press);
+  }
+
+  .group\/card:hover .cta-arrow,
+  .group\/row:hover .cta-arrow {
+    transform: translateX(4px);
+  }
+
+  .lift {
+    transition:
+      transform 180ms var(--ease-press),
+      box-shadow 180ms var(--ease-press);
+  }
+
+  @media (hover: hover) {
+    .lift:hover {
+      transform: translate(-2px, -3px);
+      box-shadow: var(--shadow-ink-lift);
+    }
+  }
+
+  .lift:active {
+    transform: translate(2px, 3px);
+    box-shadow: var(--shadow-ink-press);
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 50;
+    background: var(--color-butter);
+    color: var(--color-ink);
+    padding: 0.5rem 0.9rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    border: 3px solid var(--color-ink);
+    box-shadow: var(--shadow-ink-sm);
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  .ground {
+    height: 44px;
+    background: var(--color-teal);
+    border-top: 4px solid var(--color-ink);
+    clip-path: polygon(
+      0 42%,
+      6% 22%,
+      12% 38%,
+      19% 16%,
+      27% 34%,
+      35% 12%,
+      43% 30%,
+      52% 10%,
+      60% 28%,
+      68% 14%,
+      76% 32%,
+      84% 18%,
+      92% 36%,
+      100% 20%,
+      100% 100%,
+      0 100%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .lift:hover,
+  .lift:active,
+  .group\/card:hover .cta-arrow,
+  .group\/row:hover .cta-arrow,
+  .wordmark:hover .wordmark-dot,
+  .wordmark:focus-visible .wordmark-dot {
+    transform: none;
+  }
+}
