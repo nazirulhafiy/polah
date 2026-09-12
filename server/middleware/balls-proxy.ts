@@ -28,7 +28,11 @@ function shouldRewrite(contentType: string): boolean {
 function rewriteBallsUrls(body: string): string {
   return body
     .replace(/(^|[`"'(=\s])\/assets\//g, "$1/balls/assets/")
-    .replace(/(^|[`"'(=\s])\/favicon\.svg/g, "$1/balls/favicon.svg");
+    .replace(/(^|[`"'(=\s])\/favicon\.svg/g, "$1/balls/favicon.svg")
+    .replace(
+      /(\/balls\/assets\/index-[a-zA-Z0-9_-]+\.(?:js|css))/g,
+      "$1?v=2",
+    );
 }
 
 export default async function ballsProxyMiddleware(
@@ -62,7 +66,8 @@ export default async function ballsProxyMiddleware(
   headers.delete("content-encoding");
   headers.delete("content-length");
   headers.delete("content-security-policy");
-  headers.set("cache-control", "public, max-age=60, must-revalidate");
+  headers.set("cache-control", "public, max-age=0, must-revalidate");
+  headers.set("cdn-cache-control", "no-store");
 
   if (method === "HEAD" || !shouldRewrite(headers.get("content-type") ?? "")) {
     return new Response(method === "HEAD" ? null : upstream.body, {
