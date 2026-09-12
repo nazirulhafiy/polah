@@ -5,5 +5,8 @@
       "destination": "/balls/",
       "permanent": true
     }
-  ]
+  ],
+  "env": {
+    "VITE_PUBLIC_HOSTNAME": "polah.app"
+  }
 }

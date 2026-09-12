@@ -31,9 +31,24 @@ interface GrokPwaEvent {
 }
 
 function requestHost(event: GrokPwaEvent): string {
-  return (
-    event.req.headers.get("x-forwarded-host") ?? event.req.headers.get("host") ?? event.url.host
-  );
+  const raw = (
+    event.req.headers.get("x-forwarded-host") ??
+    event.req.headers.get("host") ??
+    event.url.host ??
+    ""
+  )
+    .split(",")[0]
+    .trim()
+    .split(":")[0];
+  if (
+    raw &&
+    raw.includes(".") &&
+    raw !== "vercel.app" &&
+    !raw.endsWith(".vercel.app")
+  ) {
+    return raw;
+  }
+  return "polah.app";
 }
 
 function injectHeadStreaming(response: Response, host: string): Response {
