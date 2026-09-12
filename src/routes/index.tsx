@@ -72,7 +72,7 @@ function Home() {
           <p className="text-sm text-muted sm:text-base">
             Made by{" "}
             <a
-              href="https://github.com/nazirulhafiy"
+              href="https://hafiy.my"
               className="underline decoration-ink/30 decoration-2 underline-offset-4 hover:decoration-ink"
             >
               Nazirul Hafiy
