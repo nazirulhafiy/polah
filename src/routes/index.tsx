@@ -73,6 +73,8 @@ function Home() {
             Made by{" "}
             <a
               href="https://hafiy.my"
+              target="_blank"
+              rel="noreferrer"
               className="underline decoration-ink/30 decoration-2 underline-offset-4 hover:decoration-ink"
             >
               Nazirul Hafiy
