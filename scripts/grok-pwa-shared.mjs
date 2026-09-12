@@ -16,6 +16,8 @@ const SHARE_META_KEYS = new Set([
   "og:image",
   "og:image:width",
   "og:image:height",
+  "og:image:type",
+  "og:image:alt",
   "og:type",
   "og:url",
   "og:site_name",
@@ -349,10 +351,12 @@ export function grokOgHeadTags({
   const description = String(site.description ?? "").trim();
   if (description) {
     tags.push(`<meta property="og:description" content="${escapeHtml(description)}">`);
+    tags.push(`<meta name="twitter:description" content="${escapeHtml(description)}">`);
   }
-  if (String(site.type ?? "").toLowerCase() === "x:game") {
-    tags.push(`<meta property="og:type" content="x:game">`);
-  }
+  const ogType =
+    String(site.type ?? "").toLowerCase() === "x:game" ? "x:game" : "website";
+  tags.push(`<meta property="og:type" content="${ogType}">`);
+  tags.push(`<meta name="twitter:title" content="${escapeHtml(title)}">`);
   if (publicHost) {
     const asset = resolveOgCardAsset(site, cwd);
     const custom = Boolean(asset);
@@ -361,9 +365,15 @@ export function grokOgHeadTags({
       : `${ogServiceUrl()}/v1/card.png?host=${encodeURIComponent(publicHost)}&title=${encodeURIComponent(title)}`;
     const color = !custom ? placeholderCardColor(site) : "";
     if (color) image += `&color=${encodeURIComponent(color)}`;
+    const imageType = image.includes(".png") ? "image/png" : "image/jpeg";
+    tags.push(`<meta property="og:url" content="https://${publicHost}/">`);
+    tags.push(`<meta property="og:site_name" content="${escapeHtml(title)}">`);
     tags.push(`<meta property="og:image" content="${escapeHtml(image)}">`);
+    tags.push(`<meta property="og:image:type" content="${imageType}">`);
     tags.push(`<meta property="og:image:width" content="1200">`);
     tags.push(`<meta property="og:image:height" content="630">`);
+    tags.push(`<meta property="og:image:alt" content="${escapeHtml(title)}">`);
+    tags.push(`<meta name="twitter:image" content="${escapeHtml(image)}">`);
     const banner = String(site.banner ?? "").trim();
     if (banner) {
       const bannerUrl = `https://${publicHost}${banner.startsWith("/") ? banner : `/${banner}`}`;
