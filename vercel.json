@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/balls",
+      "destination": "/balls/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/balls/",
+      "destination": "https://cat-balls-paws-of-chaos.vercel.app/balls/"
+    },
+    {
+      "source": "/balls/:path*",
+      "destination": "https://cat-balls-paws-of-chaos.vercel.app/balls/:path*"
+    }
+  ]
+}

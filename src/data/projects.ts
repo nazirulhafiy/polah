@@ -55,6 +55,21 @@ export const projects: Project[] = [
     href: "https://polah.app/sifir/",
   },
   {
+    name: "Cat Balls",
+    slug: "balls",
+    description: "House-cat pinball. Five cats, midnight chaos.",
+    status: "LIVE",
+    category: "game",
+    year: 2026,
+    featured: true,
+    image: "/projects/balls.png",
+    imageAlt:
+      "CAT BALLS title screen: Paws of Chaos, a moonlit house with cats in the windows.",
+    cta: "Play →",
+    available: true,
+    href: "https://polah.app/balls/",
+  },
+  {
     name: "Belajar",
     slug: "belajar",
     description: "Learning experiments.",

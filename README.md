@@ -8,8 +8,9 @@ Small things I make while learning, experimenting, and occasionally solving prob
 
 - [Kracked Quest](https://polah.app/kracked/) — a tiny doodle platformer
 - [Sifir Sprint](https://polah.app/sifir/) — a 60-second times-tables race
+- [Cat Balls](https://polah.app/balls/) — house-cat pinball
 
-`/kracked/` and `/sifir/` are their own apps. This repo is the homepage only.
+`/kracked/`, `/sifir/`, and `/balls/` are their own apps. This repo is the homepage only.
 
 ## Add a thing
 
