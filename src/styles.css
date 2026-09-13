@@ -199,43 +199,43 @@
   }
 
   .home-enter .wordmark {
-    animation: home-stamp 800ms var(--ease-press) backwards;
+    animation: home-stamp 1100ms var(--ease-press) backwards;
   }
 
   .home-enter .wordmark-dot {
-    animation: home-dot-pop 720ms var(--ease-press) 260ms backwards;
+    animation: home-dot-pop 980ms var(--ease-press) 360ms backwards;
   }
 
   .home-enter .home-kicker {
-    animation: home-rise 700ms var(--ease-press) 140ms backwards;
+    animation: home-rise 950ms var(--ease-press) 200ms backwards;
   }
 
   .home-enter .home-lede {
-    animation: home-rise 700ms var(--ease-press) 260ms backwards;
+    animation: home-rise 950ms var(--ease-press) 380ms backwards;
   }
 
   .home-enter .things-grid > * {
-    animation: home-stamp 780ms var(--ease-press) backwards;
+    animation: home-stamp 1050ms var(--ease-press) backwards;
   }
 
   .home-enter .things-grid > *:nth-child(1) {
-    animation-delay: 380ms;
+    animation-delay: 560ms;
   }
 
   .home-enter .things-grid > *:nth-child(2) {
-    animation-delay: 540ms;
+    animation-delay: 780ms;
   }
 
   .home-enter .things-grid > *:nth-child(3) {
-    animation-delay: 700ms;
+    animation-delay: 1000ms;
   }
 
   .home-enter .home-byline {
-    animation: home-rise 700ms var(--ease-press) 620ms backwards;
+    animation: home-rise 950ms var(--ease-press) 880ms backwards;
   }
 
   .home-enter .ground {
-    animation: home-hills 900ms var(--ease-press) 400ms backwards;
+    animation: home-hills 1200ms var(--ease-press) 560ms backwards;
   }
 }
 
