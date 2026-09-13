@@ -62,7 +62,7 @@ export const projects: Project[] = [
     category: "game",
     year: 2026,
     featured: true,
-    image: "/projects/balls-night.png",
+    image: "/projects/balls-silent.png",
     imageAlt:
       "CAT BALLS landing: cream title and cat cards on a midnight sky, with a doodle moon.",
     cta: "Play →",
