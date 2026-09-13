@@ -64,7 +64,7 @@ export const projects: Project[] = [
     featured: true,
     image: "/projects/balls-landing.png",
     imageAlt:
-      "CAT BALLS landing: cream doodle title, Paws of Chaos, and a name card.",
+      "CAT BALLS landing: cream doodle title, Choose your cat, and five cat cards.",
     cta: "Play →",
     available: true,
     href: "https://polah.app/balls/",
