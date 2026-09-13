@@ -41,6 +41,7 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "canonical", href: "https://polah.app/" },
+      { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {

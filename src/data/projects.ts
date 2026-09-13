@@ -31,7 +31,7 @@ export const projects: Project[] = [
     category: "game",
     year: 2026,
     featured: true,
-    image: "/projects/kracked.png",
+    image: "/projects/kracked.jpg",
     imageAlt:
       "KRACKED QUEST title art: Pipkin, a tabby cat in a red batik shirt, standing on green hills under a blue sky.",
     cta: "Play →",
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     category: "game",
     year: 2026,
     featured: true,
-    image: "/projects/sifir.png",
+    image: "/projects/sifir.jpg",
     imageAlt:
       "SIFIR SPRINT title art: a yellow title block over a navy sky and teal hills.",
     cta: "Play →",
@@ -62,9 +62,9 @@ export const projects: Project[] = [
     category: "game",
     year: 2026,
     featured: true,
-    image: "/projects/balls-silent.png",
+    image: "/projects/balls.jpg",
     imageAlt:
-      "CAT BALLS landing: cream title and cat cards on a midnight sky, with a doodle moon.",
+      "CAT BALLS landing: cream title, a name card, and teal hills.",
     cta: "Play →",
     available: true,
     href: "https://polah.app/balls/",
