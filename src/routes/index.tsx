@@ -10,7 +10,7 @@ function Home() {
   const more = moreProjects();
 
   return (
-    <div className="flex min-h-dvh flex-col bg-cream text-ink">
+    <div className="home-enter flex min-h-dvh flex-col bg-cream text-ink">
       <a href="#things" className="skip-link">
         Skip to things
       </a>
@@ -27,10 +27,10 @@ function Home() {
               className="text-[clamp(3.4rem,16vw,7.5rem)]"
             />
           </a>
-          <p className="font-display text-[clamp(1.6rem,5vw,2.35rem)] font-semibold leading-tight tracking-tight">
+          <p className="home-kicker font-display text-[clamp(1.6rem,5vw,2.35rem)] font-semibold leading-tight tracking-tight">
             means “do” in Sarawak Malay.
           </p>
-          <p className="max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
+          <p className="home-lede max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
             So here are small things I make while learning, experimenting, and
             occasionally solving problems.
           </p>
@@ -69,7 +69,7 @@ function Home() {
 
       <footer className="mt-auto">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-5 pb-8 pt-4 sm:px-8">
-          <p className="text-sm text-muted sm:text-base">
+          <p className="home-byline text-sm text-muted sm:text-base">
             Made by{" "}
             <a
               href="https://hafiy.my"

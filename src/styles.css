@@ -197,6 +197,93 @@
       0 100%
     );
   }
+
+  .home-enter .wordmark {
+    animation: home-stamp 560ms var(--ease-press) backwards;
+  }
+
+  .home-enter .wordmark-dot {
+    animation: home-dot-pop 520ms var(--ease-press) 180ms backwards;
+  }
+
+  .home-enter .home-kicker {
+    animation: home-rise 480ms var(--ease-press) 90ms backwards;
+  }
+
+  .home-enter .home-lede {
+    animation: home-rise 480ms var(--ease-press) 170ms backwards;
+  }
+
+  .home-enter .things-grid > * {
+    animation: home-stamp 540ms var(--ease-press) backwards;
+  }
+
+  .home-enter .things-grid > *:nth-child(1) {
+    animation-delay: 240ms;
+  }
+
+  .home-enter .things-grid > *:nth-child(2) {
+    animation-delay: 340ms;
+  }
+
+  .home-enter .things-grid > *:nth-child(3) {
+    animation-delay: 440ms;
+  }
+
+  .home-enter .home-byline {
+    animation: home-rise 480ms var(--ease-press) 400ms backwards;
+  }
+
+  .home-enter .ground {
+    animation: home-hills 620ms var(--ease-press) 260ms backwards;
+  }
+}
+
+@keyframes home-stamp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  72% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.015);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes home-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes home-dot-pop {
+  0% {
+    transform: scale(0);
+  }
+  58% {
+    transform: scale(1.28) rotate(-14deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes home-hills {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
