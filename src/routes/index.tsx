@@ -35,7 +35,7 @@ function Home() {
         <section
           id="things"
           aria-labelledby="things-heading"
-          className={more.length > 0 ? "pb-12 sm:pb-16" : "pb-5 sm:pb-8"}
+          className={more.length > 0 ? "pb-12 sm:pb-16" : "pb-4 sm:pb-6"}
         >
           <h2 id="things-heading" className="sr-only">
             Things
@@ -62,7 +62,7 @@ function Home() {
       </main>
 
       <footer className="mt-auto">
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-5 pb-4 pt-3 sm:px-8">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-5 pb-3 pt-2 sm:px-8">
           <p className="home-byline text-sm text-muted sm:text-base">
             Made by{" "}
             <a
