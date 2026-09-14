@@ -18,28 +18,24 @@ function Home() {
       <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-5 sm:px-8">
         <section
           aria-labelledby="hero-title"
-          className="flex flex-col gap-5 pb-14 pt-8 sm:gap-6 sm:pb-20 sm:pt-12"
+          className="flex flex-col gap-4 pb-8 pt-6 sm:gap-4 sm:pb-8 sm:pt-8"
         >
           <a href="/" className="w-fit" aria-label="POLAH. Home">
-            <Wordmark
-              as="h1"
-              id="hero-title"
-              className="text-[clamp(3.4rem,16vw,7.5rem)]"
-            />
+            <Wordmark as="h1" id="hero-title" className="text-[clamp(3.4rem,16vw,7.5rem)]" />
           </a>
           <p className="home-kicker font-display text-[clamp(1.6rem,5vw,2.35rem)] font-semibold leading-tight tracking-tight">
             means “do” in Sarawak Malay.
           </p>
           <p className="home-lede max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
-            So here are small things I make while learning, experimenting, and
-            occasionally solving problems.
+            So here are small things I make while learning, experimenting, and occasionally solving
+            problems.
           </p>
         </section>
 
         <section
           id="things"
           aria-labelledby="things-heading"
-          className={more.length > 0 ? "pb-16 sm:pb-24" : "pb-10 sm:pb-16"}
+          className={more.length > 0 ? "pb-12 sm:pb-16" : "pb-5 sm:pb-8"}
         >
           <h2 id="things-heading" className="sr-only">
             Things
@@ -52,9 +48,7 @@ function Home() {
 
           {more.length > 0 ? (
             <div className="mt-14 sm:mt-16">
-              <h3 className="font-display text-lg font-semibold tracking-tight">
-                More things
-              </h3>
+              <h3 className="font-display text-lg font-semibold tracking-tight">More things</h3>
               <ul className="mt-3 divide-y-[3px] divide-ink/15 border-y-[3px] border-ink/15">
                 {more.map((project) => (
                   <li key={project.slug}>
@@ -68,7 +62,7 @@ function Home() {
       </main>
 
       <footer className="mt-auto">
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-5 pb-8 pt-4 sm:px-8">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-5 pb-4 pt-3 sm:px-8">
           <p className="home-byline text-sm text-muted sm:text-base">
             Made by{" "}
             <a
@@ -82,7 +76,23 @@ function Home() {
             .
           </p>
         </div>
-        <div className="ground" aria-hidden="true" />
+        <div className="ground" aria-hidden="true">
+          <svg
+            className="ground-swell"
+            viewBox="0 0 1440 80"
+            preserveAspectRatio="none"
+            focusable="false"
+          >
+            <path
+              className="ground-fill"
+              d="M0 42C180 10 300 10 480 42S780 74 960 42 1260 10 1440 42V80H0Z"
+            />
+            <path
+              className="ground-crest"
+              d="M0 42C180 10 300 10 480 42S780 74 960 42 1260 10 1440 42"
+            />
+          </svg>
+        </div>
       </footer>
     </div>
   );

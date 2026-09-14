@@ -11,7 +11,7 @@ export function FeaturedCard({ project }: { project: Project }) {
       className="group/card ink lift flex flex-col overflow-hidden rounded-[18px] bg-paper text-ink"
     >
       {project.image ? (
-        <div className="relative aspect-[1200/630] overflow-hidden border-b-[3px] border-ink bg-navy">
+        <div className="relative aspect-[1200/540] overflow-hidden border-b-[3px] border-ink bg-navy">
           <img
             src={project.image}
             alt={project.imageAlt ?? ""}
@@ -51,14 +51,9 @@ export function ProjectRow({ project }: { project: Project }) {
     >
       <span className="min-w-0">
         <span className="font-display text-lg font-semibold">{project.name}</span>
-        <span className="mt-0.5 block text-pretty text-sm text-muted">
-          {project.description}
-        </span>
+        <span className="mt-0.5 block text-pretty text-sm text-muted">{project.description}</span>
       </span>
-      <span
-        className="cta-arrow shrink-0 font-display text-lg font-semibold"
-        aria-hidden="true"
-      >
+      <span className="cta-arrow shrink-0 font-display text-lg font-semibold" aria-hidden="true">
         →
       </span>
     </a>
