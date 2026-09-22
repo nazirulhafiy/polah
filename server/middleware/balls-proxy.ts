@@ -1,4 +1,4 @@
-const ORIGIN = "https://hafiy.my/cat-pinball-game/";
+const ORIGIN = new URL("https://hafiy.my/cat-pinball-game/");
 
 type ProxyEvent = {
   url: URL;
@@ -9,10 +9,38 @@ function isBallsPath(path: string): boolean {
   return path === "/balls" || path.startsWith("/balls/");
 }
 
-function originPath(path: string): string {
-  const stripped = path.slice("/balls".length);
-  if (!stripped || stripped === "/") return "";
-  return stripped.replace(/^\//, "");
+export function targetForBallsRequest(requestUrl: URL): URL | null {
+  const suffix = requestUrl.pathname.slice("/balls/".length);
+  let decodedSuffix = suffix;
+  for (let pass = 0; pass < 3; pass += 1) {
+    if (/%(?:2f|5c)/i.test(decodedSuffix)) return null;
+    try {
+      const decoded = decodeURIComponent(decodedSuffix);
+      if (decoded === decodedSuffix) break;
+      decodedSuffix = decoded;
+    } catch {
+      return null;
+    }
+  }
+  if (
+    decodedSuffix.includes("\\") ||
+    decodedSuffix.split("/").some((segment) => segment === "." || segment === "..")
+  ) {
+    return null;
+  }
+
+  const target = new URL(ORIGIN);
+  target.pathname = `${ORIGIN.pathname}${suffix}`;
+  target.search = requestUrl.search;
+
+  if (
+    target.origin !== ORIGIN.origin ||
+    !target.pathname.startsWith(ORIGIN.pathname)
+  ) {
+    return null;
+  }
+
+  return target;
 }
 
 function shouldRewrite(contentType: string): boolean {
@@ -53,7 +81,10 @@ export default async function ballsProxyMiddleware(
     });
   }
 
-  const target = new URL(originPath(path) + event.url.search, ORIGIN);
+  const target = targetForBallsRequest(event.url);
+  if (!target) {
+    return new Response("Invalid balls asset path", { status: 400 });
+  }
   const upstream = await fetch(target, {
     method,
     headers: {
