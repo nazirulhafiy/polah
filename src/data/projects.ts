@@ -64,7 +64,7 @@ export const projects: Project[] = [
     featured: true,
     image: "/projects/balls.png",
     imageAlt:
-      "CAT BALLS night art: cream title card, five cat-ball icons, and a calico cat on a yellow panel under a midnight sky.",
+      "CAT BALLS Desktop Mock A Night: cream sit-hero Tompok card, midnight purple sky, and pinball table cues.",
     cta: "Play →",
     available: true,
     href: "https://polah.app/balls/",
