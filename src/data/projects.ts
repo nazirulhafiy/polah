@@ -62,9 +62,9 @@ export const projects: Project[] = [
     category: "game",
     year: 2026,
     featured: true,
-    image: "/projects/balls.jpg",
+    image: "/projects/balls.png",
     imageAlt:
-      "CAT BALLS landing: cream title, a name card, and teal hills.",
+      "CAT BALLS night art: cream title card, five cat-ball icons, and a calico cat on a yellow panel under a midnight sky.",
     cta: "Play →",
     available: true,
     href: "https://polah.app/balls/",
