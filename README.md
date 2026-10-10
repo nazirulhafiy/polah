@@ -12,6 +12,12 @@ Small things I make while learning, experimenting, and occasionally solving prob
 
 How those paths are served is in [Routing](#routing). It is not “three apps inside this repo.”
 
+## Related repos
+
+- [nazirulhafiy/cat-pinball-game](https://github.com/nazirulhafiy/cat-pinball-game) — Cat Balls, GitHub Pages at https://hafiy.my/cat-pinball-game, proxied at https://polah.app/balls
+- [nazirulhafiy/sifir-sprint](https://github.com/nazirulhafiy/sifir-sprint) — GitHub Pages, public at https://polah.app/sifir
+- [nazirulhafiy/kracked-quest](https://github.com/nazirulhafiy/kracked-quest) — GitHub Pages, public at https://polah.app/kracked
+
 ## Run locally
 
 ```bash
