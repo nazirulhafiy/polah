@@ -42,6 +42,8 @@ That is `node scripts/with-app-env.mjs vite build && npm run db:migrate`.
 
 Vite builds the client and the server. Nitro uses the `vercel` preset and reads `server/` (`vite.config.ts`). Then `scripts/migrate.mjs` runs. See [Database](#database).
 
+The homepage depends on `@tanstack/react-start` `^1.168.60`. That release patches CVE-2026-102989. It requires `@tanstack/react-router` `1.170.41` and `@tanstack/router-plugin` `1.168.42`, so those two ranges moved with it. `@tanstack/react-query` and `@tanstack/react-table` did not. The page itself is unchanged.
+
 `npm run build:dev` builds with Vite’s development mode and does not run migrations.
 
 ## Deploy

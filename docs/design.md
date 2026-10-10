@@ -67,3 +67,7 @@ Hover (only when `hover: hover`): `.lift` shifts up-left and grows the shadow; t
 - Featured cards leave the origin in a new tab. Where `/kracked`, `/sifir`, and `/balls` actually go is documented in the README routing section, not in this stylesheet.
 - Focus visible is a 3px ink outline, 3px offset.
 - Open Graph copy is `src/lib/og/site.json` (`title` `POLAH.`, `card` `custom`). The PWA middleware in `server/middleware/grok-pwa.ts` can inject head tags and serve `/__grok/manifest.webmanifest`. It does not run for `/balls`.
+
+## Stack
+
+Built with TanStack Start `@tanstack/react-start` `^1.168.60`, `@tanstack/react-router` `^1.170.41`, and `@tanstack/router-plugin` `^1.168.42`. `1.168.60` is the patched release for CVE-2026-102989. The layout, colour, type, and motion on this page are the same as before that bump.
