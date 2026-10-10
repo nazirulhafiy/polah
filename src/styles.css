@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* docs-check throwaway: watched file with no docs update */
+
 @theme {
   --font-display: "Fredoka", ui-rounded, system-ui, sans-serif;
   --font-sans: "Bricolage Grotesk", ui-sans-serif, system-ui, sans-serif;
