@@ -11,6 +11,9 @@ import { Wordmark } from "@/components/wordmark";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "POLAH.";
+// Google Analytics 4 (shared polah.app property; also used by /sifir/ and /balls/).
+const GA_MEASUREMENT_ID = "G-B3BZXWWDH9";
+const GA_INLINE = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}');`;
 const APP_DESCRIPTION =
   "POLAH. means “do” in Sarawak Malay. So here are small things I make while learning, experimenting, and occasionally solving problems.";
 
@@ -68,6 +71,11 @@ function RootDocument() {
     <html lang="en" className="antialiased" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        />
+        <script dangerouslySetInnerHTML={{ __html: GA_INLINE }} />
       </head>
       <body className="bg-cream text-ink">
         <PreviewHostBridge />
