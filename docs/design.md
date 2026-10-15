@@ -71,3 +71,9 @@ Hover (only when `hover: hover`): `.lift` shifts up-left and grows the shadow; t
 ## Stack
 
 Built with TanStack Start `@tanstack/react-start` `^1.168.60`, `@tanstack/react-router` `^1.170.41`, and `@tanstack/router-plugin` `^1.168.42`. `1.168.60` is the patched release for CVE-2026-102989. The layout, colour, type, and motion on this page are the same as before that bump.
+
+## Analytics
+
+- Google Analytics 4: measurement ID `G-B3BZXWWDH9` (one property for all of polah.app, shared with sifir-sprint at /sifir/, cat-pinball-game at /balls/ and kracked-quest), rendered in `<head>` by `RootDocument` in `src/routes/__root.tsx`.
+- Cloudflare Web Analytics: polah.app is proxied by Cloudflare with Web Analytics auto-install enabled, so the beacon is injected at the edge; no snippet in code.
+- No Content-Security-Policy is set for app pages; if one is added, allow `www.googletagmanager.com` and `*.google-analytics.com`.
