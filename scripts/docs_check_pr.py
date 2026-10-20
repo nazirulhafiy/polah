@@ -20,6 +20,8 @@ Watched paths (keep in sync with .github/workflows/docs-check.yml and docs/ci-do
 - scripts/grok-pwa-shared.mjs
 - scripts/grok-pwa-shared.d.mts
 - scripts/preview.mjs
+- scripts/check-analytics-dist.mjs
+- data/analytics.json
 - vite.config.ts
 - vercel.json
 
@@ -51,6 +53,8 @@ WATCHED_EXACT = frozenset(
         "scripts/grok-pwa-shared.mjs",
         "scripts/grok-pwa-shared.d.mts",
         "scripts/preview.mjs",
+        "scripts/check-analytics-dist.mjs",
+        "data/analytics.json",
         "vite.config.ts",
         "vercel.json",
     }

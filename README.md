@@ -60,6 +60,14 @@ Vercel hostnames include `polah.vercel.app`. The public site is [polah.app](http
 
 `vercel.json` sets the build env name `VITE_PUBLIC_HOSTNAME` to the public hostname, and permanently redirects `/balls` to `/balls/`.
 
+## Analytics
+
+The homepage loader, registry, and dist check are described in [`docs/design.md`](docs/design.md) (Analytics). Short version: `data/analytics.json` holds the host, GA4 id `G-B3BZXWWDH9`, this zone's Cloudflare Web Analytics token, and the internal cookie `sn_internal`. One script in `src/lib/analytics/loader.ts` is rendered by the root document.
+
+On the live site, open `https://polah.app/?internal=1` so that visit is marked internal (GA4 `traffic_type: 'internal'`, Cloudflare beacon skipped). `?internal=0` clears the cookie. The loader does not run on localhost or `*.vercel.app`.
+
+Pull requests run `.github/workflows/analytics-dist.yml`: `npm run build`, then `node scripts/check-analytics-dist.mjs` (also `npm run check:analytics`). That check fails if the built homepage has zero analytics loaders, two loaders, a GA4 id that is not in the registry, or the wrong cookie.
+
 ## Environment variables
 
 Names only. Do not commit values. `.env` and `.env.*` are gitignored (`.env.example` is allowed; this repo has no example file).

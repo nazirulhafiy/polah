@@ -31,6 +31,10 @@ npm test
 - Cloudflare routing for `/sifir` and `/kracked` lives in the worker `polah-sifir-sprint-proxy`, which is not in this repo. `/balls` is proxied here, in `server/middleware/balls-proxy.ts`, to `https://hafiy.my/cat-pinball-game/`. The worker does not do that. See README § Routing.
 - `migrations/auth/0001_auth.sql` is not applied until it is copied to `migrations/`.
 
+## Analytics (internal traffic)
+
+When agents, QA, or screenshot checks open the **live** site ([https://polah.app/](https://polah.app/)), append `?internal=1` (for example `https://polah.app/?internal=1`). That sets the registry cookie from `data/analytics.json` (`sn_internal`, ~1 year) so GA4 receives `traffic_type: 'internal'` and the Cloudflare Web Analytics beacon is not loaded. `?internal=0` clears it. The loader runs only on `polah.app` and `www.polah.app`. Details: [`docs/design.md`](docs/design.md) (Analytics).
+
 ## Brand-asset note
 
 `scripts/brand-check.test.mjs` requires the marker path and the wording in the next section to stay in this file.

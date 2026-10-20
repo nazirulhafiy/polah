@@ -1,0 +1,30 @@
+# Builds the TanStack Start app and fails if the rendered homepage analytics
+# loader drifts from data/analytics.json (count, GA4 id, or internal cookie).
+name: analytics-dist
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  analytics-dist:
+    name: analytics-dist
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Check analytics dist against registry
+        run: node scripts/check-analytics-dist.mjs
