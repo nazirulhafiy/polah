@@ -4,6 +4,8 @@ Pull requests run **docs-check** (`.github/workflows/docs-check.yml`) on `opened
 
 The job name is `docs-check`. It diffs `base.sha...head.sha` (three dots) with a full fetch.
 
+A separate workflow, **analytics-dist** (`.github/workflows/analytics-dist.yml`), builds the app and checks the rendered homepage against `data/analytics.json`. That job is not the docs check.
+
 ## Watched paths
 
 Same list as the comment at the top of the workflow and the constants in [`scripts/docs_check_pr.py`](../scripts/docs_check_pr.py):
@@ -26,6 +28,8 @@ Same list as the comment at the top of the workflow and the constants in [`scrip
 - `scripts/grok-pwa-shared.mjs`
 - `scripts/grok-pwa-shared.d.mts`
 - `scripts/preview.mjs`
+- `scripts/check-analytics-dist.mjs`
+- `data/analytics.json`
 - `vite.config.ts`
 - `vercel.json`
 

@@ -1,19 +1,12 @@
-import {
-  createRootRoute,
-  HeadContent,
-  Outlet,
-  Scripts,
-} from "@tanstack/react-router";
+import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { AppErrorComponent } from "@/lib/error-component";
 import { Wordmark } from "@/components/wordmark";
+import { ANALYTICS_LOADER_ATTR, analyticsLoaderSource } from "@/lib/analytics/loader";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "POLAH.";
-// Google Analytics 4 (shared polah.app property; also used by /sifir/ and /balls/).
-const GA_MEASUREMENT_ID = "G-B3BZXWWDH9";
-const GA_INLINE = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}');`;
 const APP_DESCRIPTION =
   "POLAH. means “do” in Sarawak Malay. So here are small things I make while learning, experimenting, and occasionally solving problems.";
 
@@ -72,10 +65,9 @@ function RootDocument() {
       <head>
         <HeadContent />
         <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          {...{ [ANALYTICS_LOADER_ATTR]: "" }}
+          dangerouslySetInnerHTML={{ __html: analyticsLoaderSource() }}
         />
-        <script dangerouslySetInnerHTML={{ __html: GA_INLINE }} />
       </head>
       <body className="bg-cream text-ink">
         <PreviewHostBridge />

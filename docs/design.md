@@ -74,6 +74,31 @@ Built with TanStack Start `@tanstack/react-start` `^1.168.60`, `@tanstack/react-
 
 ## Analytics
 
-- Google Analytics 4: measurement ID `G-B3BZXWWDH9` (one property for all of polah.app, shared with sifir-sprint at /sifir/, cat-pinball-game at /balls/ and kracked-quest), rendered in `<head>` by `RootDocument` in `src/routes/__root.tsx`.
-- Cloudflare Web Analytics: polah.app is proxied by Cloudflare with Web Analytics auto-install enabled, so the beacon is injected at the edge; no snippet in code.
-- No Content-Security-Policy is set for app pages; if one is added, allow `www.googletagmanager.com` and `*.google-analytics.com`.
+IDs, the internal cookie, and the Cloudflare `spa` flag live only in `data/analytics.json`. `src/lib/analytics/registry.ts` is the typed registry. `src/lib/analytics/loader.ts` is the only loader. `RootDocument` in `src/routes/__root.tsx` puts one `<script data-sn-analytics-loader>` in `<head>`.
+
+| Field | Value |
+| --- | --- |
+| `version` | `1` |
+| `internal_cookie` | `sn_internal` |
+| `spa` | `false` |
+| Primary host | `polah.app` |
+| `aliases` | `["www.polah.app"]` |
+| `ga4_measurement_id` | `G-B3BZXWWDH9` |
+| `cf_beacon_token` | `cd795175569a442ca30e7c08a6295f9f` |
+| `legacy_internal_cookies` | `[]` |
+
+`G-B3BZXWWDH9` is the measurement ID already rendered on this homepage. It is the shared polah.app property (also used by the games at `/sifir/`, `/balls/`, and `/kracked/`, which are other repos). This loader does not change that ID.
+
+`cd795175569a442ca30e7c08a6295f9f` is this zone's Cloudflare Web Analytics site token (site tag `c5ff74d29151437c8f36cc6b8bdd681a`). The dashboard has auto-install on. A fetch of the live homepage did not include a beacon in the HTML, because the zone worker returns the Vercel document. The loader embeds this site's token so the built page can skip the beacon for internal visits. It is not the token from sarawak.news or bantuan.sarawak.news.
+
+`sn_internal` is the shared internal-traffic cookie from that same fleet registry. This repo had no internal cookie. `legacy_internal_cookies` is empty because there is no older name to keep honouring.
+
+`?internal=1` was ignored before this loader: GA always sent a normal hit, on every host. On `polah.app` and `www.polah.app` the loader now does the following. Other hosts (localhost, preview, `*.vercel.app`) load neither tag.
+
+1. `?internal=1` sets `sn_internal=1` (`path=/`, `max-age=31536000` ≈ 1 year, `SameSite=Lax`, plus `Secure` on HTTPS). `?internal=0` clears it.
+2. While that cookie is `=1`, `gtag('config', …, { traffic_type: 'internal' })` runs and the Cloudflare beacon script is not inserted.
+3. Otherwise GA4 loads with no `traffic_type`, and the beacon loads with `spa: false` (the live snippet has no SPA flag, and this homepage does not client-route between documents).
+
+`.github/workflows/analytics-dist.yml` runs `npm run build`, then `node scripts/check-analytics-dist.mjs`. The check renders `/` from `.vercel/output` and fails when that page has zero loaders, more than one, a GA4 id that is not in the registry, or a cookie name other than `sn_internal`.
+
+No Content-Security-Policy is set for app pages. If one is added, allow `www.googletagmanager.com`, `*.google-analytics.com`, and `static.cloudflareinsights.com`.
